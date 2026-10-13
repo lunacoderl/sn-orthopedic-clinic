@@ -5,6 +5,55 @@ Format adheres to [Keep a Changelog](https://keepachangelog.com/).
 
 ---
 
+## [Mobile Component Overflows, Button Blowout & Extra Space Elimination] — 2026-10-13
+
+### User Directives Addressed
+- "some components in the mobile version were taking extra space fix those!!!"
+- Attached screenshots showing:
+  1. `SymptomChecker` cards blowing out on the right with badges (`NERVE`, `HI`, `ROTATOR`) and text clipped by the right viewport boundary.
+  2. `SymptomChecker` active insight card blown out horizontally by `white-space: nowrap` on `.btn` ("Read In-Depth Knee Pain & Preservation Guide").
+  3. A 210px+ vertical tower of 4 floating buttons on mobile covering cards, buttons, and alert boxes.
+
+### Root Cause Analysis & Solution
+1. **Global Button Blowout Fixed**:
+   - `src/styles/global.css`: `.btn` had global `white-space: nowrap;` without mobile wrapping. Long button labels (such as "Read In-Depth Knee Pain & Preservation Guide") reached ~420px width, blowing out CSS Grid columns and causing horizontal scroll and card clipping.
+   - Added responsive `@media (max-width: 640px)` rule to `.btn` with `white-space: normal; line-height: 1.35; max-width: 100%; word-break: break-word;` so all buttons wrap cleanly inside their cards.
+2. **Symptom Checker Zero-Overflow Grid Architecture**:
+   - `src/sections/SymptomChecker.css`: Rewrote layout with `grid-template-columns: minmax(0, 1fr)`.
+   - Cards now use `min-width: 0; width: 100%; max-width: 100%; box-sizing: border-box; overflow: hidden;`.
+   - `.symptom-card-header` configured with `flex-wrap: wrap; gap: 0.4rem;` and `.symptom-mini-badge` allows text wrapping, ensuring tags (`Nerve Involvement`, `Rotator Cuff / Bursa`, `High Incidence`) never get truncated or clipped off-screen.
+   - Added `word-break: break-word; overflow-wrap: break-word;` across all headings, snippets, red flag boxes, and explanations.
+3. **Floating Actions Compact Mobile Rail**:
+   - `src/components/FloatingActions.css`:
+     - Hid redundant `.corner-btn-phone` on mobile (`<640px`) because direct phone calling is already permanently pinned in the sticky header (`.mobile-call-circle`).
+     - Scaled button size down to compact 38px circles (`width: 38px; height: 38px`) and 17px icons with `bottom: 0.85rem; right: 0.75rem; gap: 0.45rem`.
+     - Stack height reduced from 210px+ to ~85px, keeping it completely clear of page content, action buttons, and disclaimer cards.
+4. **General Mobile Section Extra Space Elimination**:
+   - `src/styles/global.css`: Reduced `.section-py` on mobile from `clamp(3.5rem, 7vw, 6rem)` down to `2.25rem` (36px), eliminating large empty vertical blocks. Reduced container horizontal padding to `1rem`.
+   - `src/components/SectionHeading.css`: Reduced mobile `margin-bottom` from up to 56px down to `1.5rem` (24px).
+   - `src/sections/ConditionsEdu.css`: Rebuilt grid with `minmax(0, 1fr)` and reduced mobile padding to `1.25rem 1rem`.
+   - `src/components/ServiceCard.css`: Added mobile overrides (`min-height: 165px` for thumbnails, `padding: 1.15rem 1rem;`).
+   - `src/sections/CareOverview.css`, `WhyChooseUs.css`, `CareJourney.css`, `Testimonials.css`, `LocationSection.css`, `ContactSection.css`, `ParallaxBanner.css`: Added `minmax(0, 1fr)` and streamlined mobile padding and gaps.
+
+### Files Modified
+- `src/styles/global.css`
+- `src/sections/SymptomChecker.css`
+- `src/components/FloatingActions.css`
+- `src/components/SectionHeading.css`
+- `src/sections/ConditionsEdu.css`
+- `src/components/ServiceCard.css`
+- `src/sections/CareOverview.css`
+- `src/sections/WhyChooseUs.css`
+- `src/sections/CareJourney.css`
+- `src/sections/Testimonials.css`
+- `src/sections/LocationSection.css`
+- `src/sections/ContactSection.css`
+- `src/components/ParallaxBanner.css`
+- `PROJECT_MEMORY/CHANGELOG.md`
+- `PROJECT_MEMORY/PROJECT_STATE.md`
+
+---
+
 ## [Mobile Top Space Root Cause Fix, Top Bar Degradation & Git Initialization] — 2026-10-13
 
 ### User Directives Addressed
@@ -24,53 +73,3 @@ Format adheres to [Keep a Changelog](https://keepachangelog.com/).
   - Git repository initialized.
   - Verified `.gitignore` properly excludes `node_modules` and `dist`.
   - Staged, committed, and linked to remote `https://github.com/lunacoderl/sn-orthopedic-clinic.git`.
-
-### Files Modified
-- `src/components/Navbar.css`
-- `README.md`
-- `PROJECT_MEMORY/CHANGELOG.md`
-- `PROJECT_MEMORY/PROJECT_STATE.md`
-- `PROJECT_MEMORY/CURRENT_TASK.md`
-
----
-
-## [Sticky Navbar, Center Alignment, Mobile Spacing & Full Service Images] — 2026-10-13
-
-### User Directives Addressed
-1. "navbar shoudl be sticky and clean!"
-2. "Upadate thenavbar it is not good and add more colours it is l;ooking very plan!! it should be very colourful website!!"
-3. "in mobile version extr aspace is rendering fix that!"
-4. "and use full sizes od service images dont crop them!!"
-5. "position the nav items in the center!! the items the number in desktop and hamburger icon in the mobile version are cutt offed please fix that issues"
-6. "the nav links shoudl look small clear clean they hould'nt b eclumsy!!"
-
-### Result
-- **Sticky, Clean & Colorful Navbar**:
-  - `site-header-wrapper` configured with `position: sticky; top: 0; z-index: var(--z-sticky, 100); width: 100%;` with smooth background glassmorphism when scrolled.
-  - Multi-hue vibrant gradient underline accent (`#087E8B` -> `#0CB0C2` -> `#10B981` -> `#F59E0B` -> `#E76F51`).
-  - Top announcement bar with helpline, operating hours, direct phone link, and WhatsApp pill button.
-- **Center Navigation Items**:
-  - Desktop nav links (`.desktop-nav-menu`) centered with `flex: 1; justify-content: center; margin: 0 0.65rem;`.
-  - Nav links styled to look small, clear, clean, and uncluttered (`font-size: 0.83rem; font-weight: 600; padding: 0.35rem 0.55rem; letter-spacing: 0.01em;`). Bulky icon dots removed to prevent any clumsiness.
-- **Cut-Off Fixes (Desktop & Mobile)**:
-  - Desktop: Phone number `09090595901` (`.navbar-call-btn`) and 'Consult Dr. Rao' CTA given `flex-shrink: 0; white-space: nowrap;` and contained inside a 1360px container so they are never cut off.
-  - Mobile: `.navbar-brand` constrained with `max-width: calc(100% - 56px)` and logo downsized to `height: 36px; max-width: 75px;` with doctor sub-label hidden on narrow screens.
-  - Mobile Hamburger Button: Styled as a prominent, dedicated 44x44px button (`min-width: 44px; min-height: 44px;`) with high-contrast background and border, guaranteed 100% visible and never cut off.
-- **Mobile Extra Space & Overflow Elimination**:
-  - `html, body { overflow-x: hidden; width: 100%; max-width: 100%; }` and `#root { overflow-x: hidden; width: 100%; max-width: 100%; }` applied.
-  - Removed old unpositioned floating styles; unified corner CTA stack (`.unified-corner-cta-stack`) given fixed positioning at bottom-right corner (`bottom: 1.5rem; right: 1.25rem;`).
-  - Removed duplicate floating button in `ScrollToTop.jsx`, preserving pure route scroll restoration.
-  - Replaced all `width: 100vw` with `width: 100%; right: 0; bottom: 0;` in `Gallery.css`, `EnquiryModal.css`, and `Preloader.css`.
-  - Fixed mobile hero branding and metrics bar grid blowout with responsive `@media (max-width: 640px)` rules.
-- **Full Size Service Images (Zero Cropping)**:
-  - In `ServiceCard.css`: Replaced fixed `height: 190px; object-fit: cover;` with `aspect-ratio: 16/10; object-fit: contain; max-height: 220px;` and clean slate-gradient background.
-  - In `ServiceDetails.css`: Replaced fixed crop clamp height with `object-fit: contain; max-height: 440px;` (hero) and `max-height: 480px;` (secondary diagnostic visual).
-- **Parallax Background Sections**:
-  - Created `src/components/ParallaxBanner.jsx` and `src/components/ParallaxBanner.css` to feature `bg1.png`, `bg2.png`, `bg3.png`, and `bg-4.png` with fixed-attachment scroll-over effects across the home page.
-
----
-
-## [Initial Setup & Baseline] — 2026-10-13
-
-### Task
-Initialize Vite React frontend project and persistent project memory system.

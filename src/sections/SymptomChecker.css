@@ -1,30 +1,46 @@
+/* ==========================================================================
+   S.N. HEALTH CARE - SYMPTOM NAVIGATOR & TRIAGE SYSTEM
+   - 100% Mobile Safe: Zero-Overflow minmax(0, 1fr) Grid Architecture
+   - Non-Colliding Responsive Badges & Auto-Wrapping Text
+   - Compact Mobile Spacing & Full Viewport Fitting
+   ========================================================================== */
+
 .symptom-checker-section {
   position: relative;
+  overflow: hidden;
 }
 
 .symptom-navigator-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.25rem, 3.5vw, 2.25rem);
   align-items: flex-start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 960px) {
   .symptom-navigator-layout {
-    grid-template-columns: 1.15fr 1fr;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   }
 }
 
-/* Selector List */
+/* --------------------------------------------------------------------------
+   01. Selector List & Symptom Cards
+   -------------------------------------------------------------------------- */
 .symptom-buttons-list {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
   .symptom-buttons-list {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -32,19 +48,32 @@
   background: #FFFFFF;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border-subtle);
-  padding: 1.25rem 1.5rem;
+  padding: 1.15rem 1.25rem;
   text-align: left;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
   transition: all var(--transition-normal);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .symptom-select-card {
+    padding: 0.95rem 1rem;
+    gap: 0.35rem;
+    border-radius: var(--radius-md);
+  }
 }
 
 .symptom-select-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(8, 126, 139, 0.3);
+  border-color: rgba(8, 126, 139, 0.35);
   box-shadow: var(--shadow-sm);
 }
 
@@ -58,8 +87,8 @@
   content: '';
   position: absolute;
   left: 0;
-  top: 15%;
-  height: 70%;
+  top: 12%;
+  height: 76%;
   width: 4px;
   background-color: var(--color-teal);
   border-radius: 0 4px 4px 0;
@@ -69,38 +98,77 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .symptom-region-tag {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--color-teal);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .symptom-mini-badge {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   padding: 0.15rem 0.5rem;
+  white-space: normal;
+  text-align: right;
+  max-width: 100%;
+  word-break: break-word;
 }
 
 .symptom-card-name {
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   color: var(--color-navy);
   margin-bottom: 0;
+  line-height: 1.35;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .symptom-card-name {
+    font-size: 0.96rem;
+  }
 }
 
 .symptom-card-snippet {
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   color: var(--color-text-muted);
-  line-height: 1.5;
+  line-height: 1.48;
   margin-bottom: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-/* In-Depth Insight Panel */
+@media (max-width: 640px) {
+  .symptom-card-snippet {
+    font-size: 0.81rem;
+    line-height: 1.42;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   02. In-Depth Diagnostic Insight Panel
+   -------------------------------------------------------------------------- */
 .symptom-insight-panel {
-  position: sticky;
-  top: 100px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 960px) {
+  .symptom-insight-panel {
+    position: sticky;
+    top: 100px;
+  }
 }
 
 .insight-card-inner {
@@ -108,30 +176,51 @@
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-lg);
-  padding: clamp(1.75rem, 4vw, 2.5rem);
+  padding: clamp(1.25rem, 3.5vw, 2.25rem);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .insight-card-inner {
+    padding: 1.15rem 1rem;
+    gap: 0.95rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .insight-top {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.5rem;
   border-bottom: 1px solid var(--color-border-subtle);
-  padding-bottom: 1.25rem;
+  padding-bottom: 0.9rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .insight-headline {
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
   color: var(--color-navy);
   margin-bottom: 0;
+  line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .insight-block {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.55rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .insight-subhead {
@@ -139,41 +228,65 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   font-weight: 700;
   color: var(--color-teal);
 }
 
 .insight-icon {
   color: var(--color-teal);
+  flex-shrink: 0;
 }
 
 .insight-explanation {
-  font-size: 0.98rem;
+  font-size: 0.94rem;
   color: var(--color-text-muted);
-  line-height: 1.7;
+  line-height: 1.65;
   margin-bottom: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-/* Red Flag Alert */
+@media (max-width: 640px) {
+  .insight-explanation {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   03. Red Flag Warning Alert Box
+   -------------------------------------------------------------------------- */
 .red-flag-alert-box {
   background-color: var(--color-coral-subtle);
-  border: 1px solid rgba(231, 111, 81, 0.3);
+  border: 1px solid rgba(231, 111, 81, 0.35);
   border-radius: var(--radius-md);
-  padding: 1.25rem;
+  padding: 1rem 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .red-flag-alert-box {
+    padding: 0.85rem 0.95rem;
+    gap: 0.35rem;
+  }
 }
 
 .red-flag-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  width: 100%;
 }
 
 .red-flag-icon {
   color: var(--color-coral);
+  flex-shrink: 0;
 }
 
 .red-flag-title {
@@ -186,19 +299,51 @@
 .red-flag-text {
   font-size: 0.88rem;
   color: #5A2014;
-  line-height: 1.6;
+  line-height: 1.55;
   margin-bottom: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
+@media (max-width: 640px) {
+  .red-flag-text {
+    font-size: 0.82rem;
+    line-height: 1.48;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   04. Footer Action & Link
+   -------------------------------------------------------------------------- */
 .insight-footer-action {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
-  padding-top: 0.5rem;
+  gap: 0.55rem;
+  padding-top: 0.45rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.insight-footer-action .btn {
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .disclaimer-note {
   font-size: 0.78rem;
   color: var(--color-text-light);
   font-style: italic;
+  line-height: 1.4;
+  word-break: break-word;
 }

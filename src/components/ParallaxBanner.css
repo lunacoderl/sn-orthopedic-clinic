@@ -17,7 +17,7 @@
 @media (max-width: 768px) {
   .parallax-banner-strip {
     background-attachment: scroll; /* Seamless mobile rendering */
-    padding: 3rem 0;
+    padding: 2.25rem 0;
   }
 }
 

@@ -83,6 +83,16 @@
   flex-grow: 1;
 }
 
+@media (max-width: 640px) {
+  .service-card-thumb-wrapper {
+    min-height: 165px;
+    padding: 0.5rem;
+  }
+  .service-card-body-content {
+    padding: 1.15rem 1rem;
+  }
+}
+
 .service-card-top-header {
   display: flex;
   align-items: center;

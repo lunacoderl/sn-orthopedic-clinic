@@ -11,6 +11,14 @@
   padding-bottom: clamp(3rem, 6vw, 4.5rem);
 }
 
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: auto;
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
+
 .hero-container {
   width: 100%;
   display: flex;
