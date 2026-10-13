@@ -1,0 +1,8 @@
+.faq-section {
+  position: relative;
+}
+
+.faq-container-narrow {
+  max-width: 860px;
+  margin: 0 auto;
+}

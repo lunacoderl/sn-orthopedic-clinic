@@ -1,0 +1,217 @@
+.contact-section {
+  position: relative;
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: flex-start;
+}
+
+@media (min-width: 992px) {
+  .contact-main-grid {
+    grid-template-columns: 1fr 1.25fr;
+  }
+}
+
+/* Left Info Panel */
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  color: var(--color-navy);
+  margin-bottom: 0.35rem;
+}
+
+.panel-lead {
+  font-size: 0.98rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.channel-card {
+  background: var(--color-ivory-light);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.channel-card:hover {
+  transform: translateY(-4px);
+  background: #FFFFFF;
+  border-color: rgba(8, 126, 139, 0.25);
+  box-shadow: var(--shadow-md);
+}
+
+.channel-icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.bg-navy-icon {
+  background-color: var(--color-navy);
+}
+
+.bg-whatsapp-icon {
+  background-color: #25D366;
+}
+
+.bg-teal-icon {
+  background-color: var(--color-teal);
+}
+
+.channel-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.channel-val {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
+.channel-hint {
+  font-size: 0.8rem;
+  color: var(--color-teal-dark);
+}
+
+.contact-hours-badge-box {
+  background: var(--color-sage-light);
+  border: 1px solid var(--color-sage-dark);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--color-navy);
+}
+
+.clock-icon {
+  color: var(--color-teal);
+  flex-shrink: 0;
+}
+
+/* Right Form Panel */
+.contact-form-panel {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-panel-title {
+  font-size: 1.35rem;
+  color: var(--color-navy);
+  margin-top: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+.form-panel-sub {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.quick-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-field-group label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+.contact-input, .contact-select, .contact-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-medium);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  background: #FFFFFF;
+  transition: all var(--transition-fast);
+}
+
+.contact-input:focus, .contact-select:focus, .contact-textarea:focus {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(8, 126, 139, 0.15);
+  outline: none;
+}
+
+.form-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.btn-whatsapp-send {
+  background-color: #25D366;
+  color: #FFFFFF;
+  padding: 0.85rem 1.65rem;
+  font-size: 0.95rem;
+}
+
+.btn-whatsapp-send:hover {
+  background-color: #1EBE5D;
+}
+
+.form-privacy-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  margin-top: 0.25rem;
+}

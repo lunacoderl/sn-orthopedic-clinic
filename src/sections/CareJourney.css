@@ -1,0 +1,78 @@
+.care-journey-section {
+  position: relative;
+}
+
+.journey-timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .journey-timeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1040px) {
+  .journey-timeline-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.journey-step-card {
+  background: var(--color-ivory-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.journey-step-card:hover {
+  transform: translateY(-5px);
+  background: #FFFFFF;
+  border-color: rgba(8, 126, 139, 0.25);
+  box-shadow: var(--shadow-lg);
+}
+
+.step-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step-badge-circle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-teal);
+  background: var(--color-teal-subtle);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-icon-wrap {
+  color: var(--color-navy);
+  opacity: 0.7;
+}
+
+.step-title {
+  font-size: 1.2rem;
+  color: var(--color-navy);
+  margin-bottom: 0;
+}
+
+.step-desc {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+}

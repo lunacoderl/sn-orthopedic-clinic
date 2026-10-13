@@ -1,0 +1,169 @@
+.why-choose-section {
+  position: relative;
+  background-image: url('/clinic/clinic-banner.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  padding-top: clamp(4rem, 8vw, 6.5rem);
+  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .why-choose-section {
+    background-attachment: scroll; /* Clean mobile degradation */
+  }
+}
+
+.why-choose-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 34, 51, 0.94) 0%,
+    rgba(18, 59, 87, 0.9) 60%,
+    rgba(8, 126, 139, 0.85) 100%
+  );
+  z-index: 0;
+}
+
+.why-choose-container {
+  position: relative;
+  z-index: 1;
+}
+
+.why-choose-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.why-choose-title {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.why-choose-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.7;
+}
+
+/* Glassmorphism Reasons Grid */
+.reasons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .reasons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1040px) {
+  .reasons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.reason-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.reason-glass-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.reason-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(8, 126, 139, 0.4);
+}
+
+.reason-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.reason-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0;
+}
+
+.reason-card-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* CTA Box */
+.why-choose-cta-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.cta-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.cta-box-title {
+  font-size: 1.35rem;
+  color: #FFFFFF;
+}
+
+.cta-box-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0;
+}
+
+.cta-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}

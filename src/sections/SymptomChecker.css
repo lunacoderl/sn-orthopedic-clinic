@@ -1,0 +1,204 @@
+.symptom-checker-section {
+  position: relative;
+}
+
+.symptom-navigator-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: flex-start;
+}
+
+@media (min-width: 960px) {
+  .symptom-navigator-layout {
+    grid-template-columns: 1.15fr 1fr;
+  }
+}
+
+/* Selector List */
+.symptom-buttons-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .symptom-buttons-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.symptom-select-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-subtle);
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.symptom-select-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(8, 126, 139, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.symptom-select-card.selected {
+  border-color: var(--color-teal);
+  box-shadow: var(--shadow-md);
+  background: #FFFFFF;
+}
+
+.symptom-select-card.selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 4px;
+  background-color: var(--color-teal);
+  border-radius: 0 4px 4px 0;
+}
+
+.symptom-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.symptom-region-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-teal);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.symptom-mini-badge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+}
+
+.symptom-card-name {
+  font-size: 1.05rem;
+  color: var(--color-navy);
+  margin-bottom: 0;
+}
+
+.symptom-card-snippet {
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* In-Depth Insight Panel */
+.symptom-insight-panel {
+  position: sticky;
+  top: 100px;
+}
+
+.insight-card-inner {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.insight-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: 1.25rem;
+}
+
+.insight-headline {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  color: var(--color-navy);
+  margin-bottom: 0;
+}
+
+.insight-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.insight-subhead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-teal);
+}
+
+.insight-icon {
+  color: var(--color-teal);
+}
+
+.insight-explanation {
+  font-size: 0.98rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* Red Flag Alert */
+.red-flag-alert-box {
+  background-color: var(--color-coral-subtle);
+  border: 1px solid rgba(231, 111, 81, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.red-flag-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.red-flag-icon {
+  color: var(--color-coral);
+}
+
+.red-flag-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.92rem;
+  color: #B43419;
+}
+
+.red-flag-text {
+  font-size: 0.88rem;
+  color: #5A2014;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.insight-footer-action {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding-top: 0.5rem;
+}
+
+.disclaimer-note {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  font-style: italic;
+}

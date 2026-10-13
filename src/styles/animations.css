@@ -1,0 +1,89 @@
+/* Medical Pulse & Wave Animations */
+@keyframes pulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 0.92;
+  }
+}
+
+@keyframes heartbeatPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes glowTeal {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(8, 126, 139, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(8, 126, 139, 0.45);
+  }
+}
+
+/* Skeleton Loading Shimmer */
+.skeleton-box {
+  background: linear-gradient(
+    90deg,
+    rgba(18, 59, 87, 0.05) 25%,
+    rgba(18, 59, 87, 0.12) 37%,
+    rgba(18, 59, 87, 0.05) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeletonShimmer 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Fixed Background Parallax Layer */
+.fixed-bg-section {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .fixed-bg-section {
+    background-attachment: scroll; /* Smooth fallback for mobile */
+  }
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .skeleton-box {
+    animation: none;
+    background: rgba(18, 59, 87, 0.08);
+  }
+}

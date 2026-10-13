@@ -1,0 +1,160 @@
+/* ==========================================================================
+   S.N. HEALTH CARE - UNIFIED BOTTOM-RIGHT CORNER CTAS & SCROLL-TOP
+   ========================================================================== */
+
+.unified-corner-cta-stack {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.25rem;
+  z-index: var(--z-action-rail, 300);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  gap: 0.65rem;
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  .unified-corner-cta-stack {
+    bottom: 1.15rem;
+    right: 1rem;
+    gap: 0.55rem;
+  }
+}
+
+/* Individual Action Button */
+.corner-action-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(10, 34, 51, 0.22);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .corner-action-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.corner-action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 28px rgba(10, 34, 51, 0.3);
+}
+
+/* 01. Phone Call CTA */
+.corner-btn-phone {
+  background: linear-gradient(135deg, #123B57 0%, #0A2233 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* 02. WhatsApp Direct CTA */
+.corner-btn-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.corner-btn-whatsapp:hover {
+  background: #1EBE5D;
+}
+
+/* 03. Book Consultation CTA */
+.corner-btn-book {
+  background: linear-gradient(135deg, #087E8B 0%, #0CB0C2 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Pulse Ping Indicator for Book Appointment */
+.pulse-ping {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #E76F51;
+  border: 2px solid #FFFFFF;
+  animation: pulseSubtle 1.8s infinite;
+}
+
+/* 04. Scroll To Top with Circular Progress Animation */
+.corner-btn-scroll {
+  background: #FFFFFF;
+  color: var(--color-navy);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.corner-btn-scroll:hover {
+  background: var(--color-ivory-light);
+}
+
+.corner-progress-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-track {
+  fill: none;
+  stroke: rgba(8, 126, 139, 0.12);
+  stroke-width: 2.5;
+}
+
+.progress-indicator {
+  fill: none;
+  stroke: var(--color-teal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.15s ease-out;
+}
+
+.scroll-arrow-icon {
+  position: relative;
+  z-index: 1;
+  color: var(--color-navy);
+}
+
+/* Tooltip on Desktop */
+.corner-tooltip {
+  position: absolute;
+  right: 56px;
+  background-color: var(--color-navy);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.corner-action-btn:hover .corner-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .corner-tooltip {
+    display: none; /* Hide tooltips on touch devices */
+  }
+}

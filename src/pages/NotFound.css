@@ -1,0 +1,98 @@
+.not-found-page {
+  background-color: var(--color-ivory-light);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.not-found-container {
+  display: flex;
+  justify-content: center;
+}
+
+.not-found-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.not-found-code {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  font-weight: 800;
+  color: var(--color-teal);
+  line-height: 1;
+}
+
+.not-found-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--color-navy);
+  margin-bottom: 0;
+}
+
+.not-found-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.not-found-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.not-found-services-box {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-subtle);
+  width: 100%;
+}
+
+.services-box-title {
+  font-size: 0.92rem;
+  color: var(--color-navy);
+  margin-bottom: 1rem;
+}
+
+.services-box-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.service-quick-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--color-ivory-light);
+  border: 1px solid var(--color-border-subtle);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.service-quick-pill:hover {
+  background: var(--color-teal-subtle);
+  color: var(--color-teal-dark);
+  border-color: var(--color-teal);
+}
